@@ -46,6 +46,38 @@ proc doA {} {
   return [list [list $con1 $con2 $con3 $con4 $con5 $con6 $con7] [list $con8 $con9 $con10]]
 }
 
+
+proc doB {} {
+  global h
+  global h5
+  global w
+  global w3
+  global w4
+  global w5
+  set z -0.1
+
+  set con1 [createCon "0.0 0.0 $z"            "[expr {4*$w5}] 0.0 $z"]
+  set con2 [createCon "[expr {4*$w5}] 0.0 $z" "$w $h5 $z"]
+  set con3 [createCon "$w $h5 $z"             "$w [expr {4*$h5}] $z"]
+  set con4 [createCon "$w [expr {4*$h5}] $z"  "[expr {4*$w5}] $h $z"]
+  set con5 [createCon "[expr {4*$w5}] $h $z"  "0.0 $h $z"]
+  set con6 [createCon "0.0 $h $z"             "0.0 0.0 $z"]
+
+
+  set con7  [createCon "$w4 $h5 $z"                        "[expr {2*$w3}] $h5 $z"]
+  set con8  [createCon "$w4 $h5 $z"                        "$w4 [expr {2*$h5}] $z"]
+  set con9  [createCon "$w4 [expr {2*$h5}] $z"             "[expr {2*$w3}] [expr {2*$h5}] $z"]
+  set con10 [createCon "[expr {2*$w3}] [expr {2*$h5}] $z"  "[expr {2*$w3}] $h5 $z"]
+
+
+  set con11 [createCon "$w4 [expr {3*$h5}] $z"            "[expr {2*$w3}] [expr {3*$h5}] $z"]
+  set con12 [createCon "$w4 [expr {3*$h5}] $z"            "$w4 [expr {4*$h5}] $z"]
+  set con13 [createCon "$w4 [expr {4*$h5}] $z"            "[expr {2*$w3}] [expr {4*$h5}] $z"]
+  set con14 [createCon "[expr {2*$w3}] [expr {4*$h5}] $z" "[expr {2*$w3}] [expr {3*$h5}] $z"]
+
+  return [list [list $con1 $con2 $con3 $con4 $con5 $con6] [list $con7 $con8 $con9 $con10] [list $con11 $con12 $con13 $con14]]
+}
+
 proc doD {} {
   global h
   global h5

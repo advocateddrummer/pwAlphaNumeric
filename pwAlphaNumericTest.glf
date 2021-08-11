@@ -26,25 +26,26 @@ proc createSimpleDomain {outerLoop} {
   return dom
 }
 
-proc createComplexDomain {outerLoop args} {
+proc createComplexDomain {outerLoop {innerLoops {} } } {
   set mode1 [pw::Application begin Create]
     #puts "outerLoop = $outerLoop"
     #puts "in createDomain..."
-    #puts "\targs is: $args"
+    #puts "\tinnerLoops is: $innerLoops"
 
     set outerEdge [pw::Edge create]
     foreach c $outerLoop {
       $outerEdge addConnector $c
     }
 
-    #puts "length of args is [llength $args]"
+    #puts "length of innerLoops is [llength $innerLoops]"
+
     set dom [pw::DomainUnstructured create]
     $dom addEdge $outerEdge
     unset outerEdge
 
     # This _assumes_ correct winding
-    if {[llength $args] > 0} {
-      foreach l $args {
+    if {[llength $innerLoops] > 0} {
+      foreach l $innerLoops {
         set innerEdge [pw::Edge create]
         foreach c [join $l] {
           $innerEdge addConnector $c

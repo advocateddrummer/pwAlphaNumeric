@@ -1,5 +1,6 @@
 # The height of each letter/number.
 set h 0.75
+set h2 [expr {$h/2.0}]
 set h3 [expr {$h/3.0}]
 set h4 [expr {$h/4.0}]
 set h5 [expr {$h/5.0}]
@@ -19,6 +20,31 @@ set w5 [expr {$w/5.0}]
 # 'translated' somehow to where ever the character is needed. This is to avoid
 # potential issues when/if the current letter is created on top of a
 # preexisting letter in the z = 0 plane.
+
+proc doA {} {
+  global h
+  global h2
+  global h3
+  global h4
+  global w
+  global w2
+  global w3
+  set z -0.1
+
+  set con1 [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
+  set con2 [createCon "$w3 0.0 $z"            "$w2 $h3 $z"]
+  set con3 [createCon "$w2 $h3 $z"            "[expr {2*$w3}] 0.0 $z"]
+  set con4 [createCon "[expr {2*$w3}] 0.0 $z" "$w 0.0 $z"]
+  set con5 [createCon "$w 0.0 $z"             "[expr {2*$w3}] $h $z"]
+  set con6 [createCon "[expr {2*$w3}] $h $z"  "$w3 $h $z"]
+  set con7 [createCon "$w3 $h $z"             "0.0 0.0 $z"]
+
+  set con8  [createCon "$w3 $h2 $z"            "$w2 [expr {3*$h4}] $z"]
+  set con9  [createCon "$w2 [expr {3*$h4}] $z" "[expr {2*$w3}] $h2 $z"]
+  set con10 [createCon "[expr {2*$w3}] $h2 $z" "$w3 $h2 $z"]
+
+  return [list [list $con1 $con2 $con3 $con4 $con5 $con6 $con7] [list $con8 $con9 $con10]]
+}
 
 proc doD {} {
   global h

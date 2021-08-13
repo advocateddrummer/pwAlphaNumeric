@@ -570,4 +570,25 @@ proc doX {} {
   return [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8 $con9 $con10 $con11 $con12]
 }
 
+proc doY {} {
+  global h
+  global h5
+  global w
+  global w2
+  global w3
+  set z -0.1
+
+  set con1 [createCon "$w3 0.0 $z"                       "[expr {2*$w3}] 0.0 $z"]
+  set con2 [createCon "[expr {2*$w3}] 0.0 $z"            "[expr {2*$w3}] [expr {2*$h5}] $z"]
+  set con3 [createCon "[expr {2*$w3}] [expr {2*$h5}] $z" "$w $h $z"]
+  set con4 [createCon "$w $h $z"                         "[expr {2*$w3}] $h $z"]
+  set con5 [createCon "[expr {2*$w3}] $h $z"             "$w2 [expr {3*$h5}] $z"]
+  set con6 [createCon "$w2 [expr {3*$h5}] $z"            "$w3 $h $z"]
+  set con7 [createCon "$w3 $h $z"                        "0.0 $h $z"]
+  set con8 [createCon "0.0 $h $z"                        "$w3 [expr {2*$h5}] $z"]
+  set con9 [createCon "$w3 [expr {2*$h5}] $z"            "$w3 0.0 $z"]
+
+  return [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8 $con9]
+}
+
 # vim: set ft=tcl:

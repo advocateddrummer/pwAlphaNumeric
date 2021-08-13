@@ -614,6 +614,26 @@ proc doZ {} {
 
 # Begin numbers.
 
+proc do0 {} {
+  global h
+  global h5
+  global w
+  global w3
+  set z -0.1
+
+  set con1 [createCon "0.0 0.0 $z" "$w 0.0 $z"]
+  set con2 [createCon "$w 0.0 $z"  "$w $h $z"]
+  set con3 [createCon "$w $h $z"   "0.0 $h $z"]
+  set con4 [createCon "0.0 $h $z"  "0.0 0.0 $z"]
+
+  set con5 [createCon "$w3 $h5 $z"                       "$w3 [expr {4*$h5}] $z"]
+  set con6 [createCon "$w3 [expr {4*$h5}] $z"            "[expr {2*$w3}] [expr {4*$h5}] $z"]
+  set con7 [createCon "[expr {2*$w3}] [expr {4*$h5}] $z" "[expr {2*$w3}] $h5 $z"]
+  set con8 [createCon "[expr {2*$w3}] $h5 $z"            "$w3 $h5 $z"]
+
+  return [list [list $con1 $con2 $con3 $con4] [list $con5 $con6 $con7 $con8]]
+}
+
 proc do1 {} {
   global h
   global h5

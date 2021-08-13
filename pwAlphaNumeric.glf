@@ -1,3 +1,72 @@
+# Settings
+pw::Application setGridPreference Unstructured
+pw::Connector setCalculateDimensionMethod Spacing
+pw::Connector setCalculateDimensionSpacing 0.01
+pw::DomainUnstructured setDefault Algorithm AdvancingFrontOrtho
+pw::DomainUnstructured setDefault IsoCellType TriangleQuad
+
+# Utilitiy procedures
+proc doTranslate {entities vec} {
+  set translateMode [pw::Application begin Modify $entities]
+    pw::Entity transform [pwu::Transform translation $vec] [$translateMode getEntities]
+  $translateMode end
+  unset translateMode
+}
+
+proc createSimpleDomain {outerLoop} {
+  set dom [pw::DomainUnstructured createFromConnectors -reject unusedCons $outerLoop]
+  unset unusedCons
+
+  return dom
+}
+
+proc createComplexDomain {outerLoop {innerLoops {} } } {
+  set mode1 [pw::Application begin Create]
+    #puts "outerLoop = $outerLoop"
+    #puts "in createDomain..."
+    #puts "\tinnerLoops is: $innerLoops"
+
+    set outerEdge [pw::Edge create]
+    foreach c $outerLoop {
+      $outerEdge addConnector $c
+    }
+
+    #puts "length of innerLoops is [llength $innerLoops]"
+
+    set dom [pw::DomainUnstructured create]
+    $dom addEdge $outerEdge
+    unset outerEdge
+
+    # This _assumes_ correct winding
+    if {[llength $innerLoops] > 0} {
+      foreach l $innerLoops {
+        set innerEdge [pw::Edge create]
+        foreach c [join $l] {
+          $innerEdge addConnector $c
+          }
+        $dom addEdge $innerEdge
+        unset innerEdge
+      }
+    }
+  $mode1 end
+  unset mode1
+}
+
+proc createCon {pt1 pt2} {
+  set mode1 [pw::Application begin Create]
+    set spline [pw::SegmentSpline create]
+    $spline addPoint $pt1
+    $spline addPoint $pt2
+    set con [pw::Connector create]
+    $con addSegment $spline
+    unset spline
+    $con calculateDimension
+  $mode1 end
+  unset mode1
+
+  return $con
+}
+
 # The height of each letter/number.
 set h 0.75
 set h2 [expr {$h/2.0}]

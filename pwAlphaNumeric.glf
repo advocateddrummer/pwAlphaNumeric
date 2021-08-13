@@ -67,14 +67,14 @@ proc createCon {pt1 pt2} {
   return $con
 }
 
-# The height of each letter/number.
+# The height, and height increments, of each letter/number.
 set h 0.75
 set h2 [expr {$h/2.0}]
 set h3 [expr {$h/3.0}]
 set h4 [expr {$h/4.0}]
 set h5 [expr {$h/5.0}]
 
-# The width of each letter/number.
+# The width, and width increments, of each letter/number.
 set w 0.5
 set w2 [expr {$w/2.0}]
 set w3 [expr {$w/3.0}]

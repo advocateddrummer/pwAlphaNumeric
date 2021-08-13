@@ -501,6 +501,25 @@ proc doU {} {
   return [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8]
 }
 
+proc doV {} {
+  global h
+  global h3
+  global w
+  global w2
+  global w3
+  set z -0.1
+
+  set con1 [createCon "$w3 0.0 $z"            "[expr {2*$w3}] 0.0 $z"]
+  set con2 [createCon "[expr {2*$w3}] 0.0 $z" "$w $h $z"]
+  set con3 [createCon "$w $h $z"              "[expr {2*$w3}] $h $z"]
+  set con4 [createCon "[expr {2*$w3}] $h $z"  "$w2 $h3 $z"]
+  set con5 [createCon "$w2 $h3 $z"            "$w3 $h $z"]
+  set con6 [createCon "$w3 $h $z"             "0.0 $h $z"]
+  set con7 [createCon "0.0 $h $z"             "$w3 0.0 $z"]
+
+  return [list $con1 $con2 $con3 $con4 $con5 $con6 $con7]
+}
+
 proc doW {} {
   global h
   global h3

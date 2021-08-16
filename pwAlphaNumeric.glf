@@ -905,4 +905,18 @@ proc do9 {} {
   return [list [list $con1 $con2 $con3 $con4 $con5 $con6] [list $con7 $con8 $con9 $con10]]
 }
 
+# Begin punctuation.
+
+proc doPeriod {} {
+  global w3
+  set z -0.1
+
+  set con1 [createCon "0.0 0.0 $z" "$w3 0.0 $z"]
+  set con2 [createCon "$w3 0.0 $z" "$w3 $w3 $z"]
+  set con3 [createCon "$w3 $w3 $z" "0.0 $w3 $z"]
+  set con4 [createCon "0.0 $w3 $z" "0.0 0.0 $z"]
+
+  return [list $con1 $con2 $con3 $con4]
+}
+
 # vim: set ft=tcl:

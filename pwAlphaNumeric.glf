@@ -919,6 +919,18 @@ proc doPeriod {} {
   return [list $con1 $con2 $con3 $con4]
 }
 
+proc doComma {} {
+  global w3
+  set z -0.1
+
+  set con1 [createCon "0.0 -$w3 $z" "$w3 0.0 $z"]
+  set con2 [createCon "$w3 0.0 $z"  "$w3 $w3 $z"]
+  set con3 [createCon "$w3 $w3 $z"  "0.0 $w3 $z"]
+  set con4 [createCon "0.0 $w3 $z"  "0.0 -$w3 $z"]
+
+  return [list $con1 $con2 $con3 $con4]
+}
+
 # This procedure has exposed an issue with the way these loops are handles... I
 # need to re-think this.
 proc doExclamation {} {

@@ -936,4 +936,36 @@ proc doExclamation {} {
 
   return [list [list $con1 $con2 $con3 $con4] $period]
 }
+
+proc doQuestion {} {
+  global h
+  global h2
+  global h4
+  global h5
+  global w
+  global w3
+  set z -0.1
+
+  set period [doPeriod]
+
+  doTranslate $period "$w3 0.0 0.0"
+
+  set con1  [createCon "$w3 $h4 $z"                       "[expr {2*$w3}] $h4 $z"]
+  set con2  [createCon "[expr {2*$w3}] $h4 $z"            "[expr {2*$w3}] [expr {2*$h5}] $z"]
+  #set con3  [createCon "[expr {2*$w3}] [expr {2*$h5}] $z" "$w $h2 $z"]
+  set con3  [createCon "[expr {2*$w3}] [expr {2*$h5}] $z" "$w [expr {2*$h5}] $z"]
+  #set con4  [createCon "$w $h2 $z"                        "$w $h $z"]
+  set con4  [createCon "$w [expr {2*$h5}] $z"             "$w $h $z"]
+  set con5  [createCon "$w $h $z"                         "0.0 $h $z"]
+  set con6  [createCon "0.0 $h $z"                        "0.0 [expr {3*$h4}] $z"]
+  set con7  [createCon "0.0 [expr {3*$h4}] $z"            "$w3 [expr {3*$h4}] $z"]
+  set con8  [createCon "$w3 [expr {3*$h4}] $z"            "$w3 [expr {4*$h5}] $z"]
+  set con9  [createCon "$w3 [expr {4*$h5}] $z"            "[expr {2*$w3}] [expr {4*$h5}] $z"]
+  set con10 [createCon "[expr {2*$w3}] [expr {4*$h5}] $z" "[expr {2*$w3}] [expr {3*$h5}] $z"]
+  set con11 [createCon "[expr {2*$w3}] [expr {3*$h5}] $z" "$w3 [expr {3*$h5}] $z"]
+  set con12 [createCon "$w3 [expr {3*$h5}] $z"            "$w3 $h4 $z"]
+
+  return [list [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8 $con9 $con10 $con11 $con12] $period]
+}
+
 # vim: set ft=tcl:

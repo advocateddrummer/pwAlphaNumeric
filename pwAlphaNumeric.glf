@@ -919,4 +919,21 @@ proc doPeriod {} {
   return [list $con1 $con2 $con3 $con4]
 }
 
+# This procedure has exposed an issue with the way these loops are handles... I
+# need to re-think this.
+proc doExclamation {} {
+  global h
+  global h4
+  global w3
+  set z -0.1
+
+  set period [doPeriod]
+
+  set con1 [createCon "0.0 $h4 $z" "$w3 $h4 $z"]
+  set con2 [createCon "$w3 $h4 $z" "$w3 $h $z"]
+  set con3 [createCon "$w3 $h $z"  "0.0 $h $z"]
+  set con4 [createCon "0.0 $h $z"  "0.0 $h4 $z"]
+
+  return [list [list $con1 $con2 $con3 $con4] $period]
+}
 # vim: set ft=tcl:

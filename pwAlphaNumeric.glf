@@ -486,15 +486,15 @@ proc doR {} {
   global w4
   set z -0.1
 
-  set con1 [createCon "0.0 0.0 $z"                       "$w4 0.0 $z"]
-  set con2 [createCon "$w4 0.0 $z"                       "$w4 [expr {2*$h5}] $z"]
-  set con3 [createCon "$w4 [expr {2*$h5}] $z"            "[expr {2*$w3}] 0.0 $z"]
-  set con4 [createCon "[expr {2*$w3}] 0.0 $z"            "$w 0.0 $z"]
-  set con5 [createCon "$w 0.0 $z"                        "[expr {2*$w3}] [expr {2*$h5}] $z"]
-  set con6 [createCon "[expr {2*$w3}] [expr {2*$h5}] $z" "$w [expr {2*$h5}] $z"]
-  set con7 [createCon "$w [expr {2*$h5}] $z"             "$w $h $z"]
-  set con8 [createCon "$w $h $z"                         "0.0 $h $z"]
-  set con9 [createCon "0.0 $h $z"                        "0.0 0.0 $z"]
+  set con1 [createCon "0.0 0.0 $z"                           "$w4 0.0 $z"]
+  set con2 [createCon "$w4 0.0 $z"                           "$w4 [expr {2*$h5}] $z"]
+  set con3 [createCon "$w4 [expr {2*$h5}] $z"                "[expr {2*$w3}] 0.0 $z"]
+  set con4 [createCon "[expr {2*$w3}] 0.0 $z"                "$w 0.0 $z"]
+  set con5 [createCon "$w 0.0 $z"                            "[expr {$w4 + $w3}] [expr {2*$h5}] $z"]
+  set con6 [createCon "[expr {$w4 + $w3}] [expr {2*$h5}] $z" "$w [expr {2*$h5}] $z"]
+  set con7 [createCon "$w [expr {2*$h5}] $z"                 "$w $h $z"]
+  set con8 [createCon "$w $h $z"                             "0.0 $h $z"]
+  set con9 [createCon "0.0 $h $z"                            "0.0 0.0 $z"]
 
   set con10 [createCon "$w4 [expr {3*$h5}] $z"            "$w4 [expr {4*$h5}] $z"]
   set con11 [createCon "$w4 [expr {4*$h5}] $z"            "[expr {2*$w3}] [expr {4*$h5}] $z"]

@@ -398,6 +398,28 @@ set dom [createSimpleDomain $loop]
 ###########################################################################
 set loop [doZ]
 
+doTranslate $loop "0.0 [expr {-5*$dy}] 0.1"
+
+pw::Display zoomToEntities -animate $animationSpeed $loop
+
+lappend all {*}$loop
+
+set dom [createSimpleDomain $loop]
+
+###########################################################################
+set loop [doPeriod]
+
+doTranslate $loop "$dx [expr {-5*$dy}] 0.1"
+
+pw::Display zoomToEntities -animate $animationSpeed $loop
+
+lappend all {*}$loop
+
+set dom [createSimpleDomain $loop]
+
+###########################################################################
+set loop [doComma]
+
 doTranslate $loop "[expr {2*$dx}] [expr {-5*$dy}] 0.1"
 
 pw::Display zoomToEntities -animate $animationSpeed $loop
@@ -406,6 +428,30 @@ lappend all {*}$loop
 
 set dom [createSimpleDomain $loop]
 
-pw::Display zoomToEntities -animate 1 [join $all]
+###########################################################################
+set loops [doExclamation]
+
+doTranslate [join $loops] "[expr {3*$dx}] [expr {-5*$dy}] 0.1"
+
+pw::Display zoomToEntities -animate $animationSpeed [join $loops]
+
+lappend all {*}$loops
+
+set dom [createSimpleDomain [lindex $loops 0]]
+set dom [createSimpleDomain [lindex $loops 1]]
+
+###########################################################################
+set loops [doQuestion]
+
+doTranslate [join $loops] "[expr {4*$dx}] [expr {-5*$dy}] 0.1"
+
+pw::Display zoomToEntities -animate $animationSpeed [join $loops]
+
+lappend all {*}$loops
+
+set dom [createSimpleDomain [lindex $loops 0]]
+set dom [createSimpleDomain [lindex $loops 1]]
+
+pw::Display zoomToEntities -animate $animationSpeed [join $all]
 
 # vim: set ft=tcl:

@@ -89,6 +89,7 @@ set w5 [expr {$w/5.0}]
 # 'translated' somehow to where ever the character is needed. This is to avoid
 # potential issues when/if the current letter is created on top of a
 # preexisting letter in the z = 0 plane.
+set z -0.1
 
 proc doA {} {
   global h
@@ -98,7 +99,7 @@ proc doA {} {
   global w
   global w2
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
   set con2 [createCon "$w3 0.0 $z"            "$w2 $h3 $z"]
@@ -123,7 +124,7 @@ proc doB {} {
   global w3
   global w4
   global w5
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"            "[expr {4*$w5}] 0.0 $z"]
   set con2 [createCon "[expr {4*$w5}] 0.0 $z" "$w $h5 $z"]
@@ -152,7 +153,7 @@ proc doC {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"            "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"             "$w $h5 $z"]
@@ -173,7 +174,7 @@ proc doD {} {
   global w3
   global w4
   global w5
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"            "[expr {4*$w5}] 0.0 $z"]
   set con2 [createCon "[expr {4*$w5}] 0.0 $z" "$w $h5 $z"]
@@ -195,7 +196,7 @@ proc doE {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "$w 0.0 $z"]
   set con2  [createCon "$w 0.0 $z"                        "$w $h5 $z"]
@@ -218,7 +219,7 @@ proc doF {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"                       "$w3 [expr {2*$h5}] $z"]
@@ -240,7 +241,7 @@ proc doG {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"            "$w 0.0 $z"]
   set con2  [createCon "$w 0.0 $z"             "$w $h2 $z"]
@@ -261,7 +262,7 @@ proc doH {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"                       "$w3 [expr {2*$h5}] $z"]
@@ -284,7 +285,7 @@ proc doI {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"                       "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"                        "$w $h5 $z"]
@@ -307,7 +308,7 @@ proc doJ {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "[expr {2*$w3}] 0.0 $z"]
   set con2  [createCon "[expr {2*$w3}] 0.0 $z"            "[expr {2*$w3}] [expr {4*$h5}] $z"]
@@ -329,7 +330,7 @@ proc doK {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"            "$w3 [expr {2*$h5}] $z"]
@@ -351,7 +352,7 @@ proc doL {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z" "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"  "$w $h5 $z"]
@@ -370,7 +371,7 @@ proc doM {} {
   global w
   global w2
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"            "$w3 $h3 $z"]
@@ -393,7 +394,7 @@ proc doN {} {
   global h2
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"            "$w3 $h2 $z"]
@@ -415,7 +416,7 @@ proc doO {} {
   global w
   global w3
   global w4
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z" "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z" "$w $h $z"]
@@ -436,7 +437,7 @@ proc doP {} {
   global w
   global w3
   global w4
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"            "$w4 0.0 $z"]
   set con2 [createCon "$w4 0.0 $z"            "$w4 [expr {2*$h5}] $z"]
@@ -461,7 +462,7 @@ proc doQ {} {
   global w2
   global w3
   global w4
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z" "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"  "$w $h $z"]
@@ -484,7 +485,7 @@ proc doR {} {
   global w
   global w3
   global w4
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"                           "$w4 0.0 $z"]
   set con2 [createCon "$w4 0.0 $z"                           "$w4 [expr {2*$h5}] $z"]
@@ -511,7 +512,7 @@ proc doS {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "$w 0.0 $z"]
   set con2  [createCon "$w 0.0 $z"                        "$w $h4 $z"]
@@ -536,7 +537,7 @@ proc doT {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "$w3 0.0 $z"                       "[expr {2*$w3}] 0.0 $z"]
   set con2 [createCon "[expr {2*$w3}] 0.0 $z"            "[expr {2*$w3}] [expr {4*$h5}] $z"]
@@ -555,7 +556,7 @@ proc doU {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"            "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"             "$w $h $z"]
@@ -575,7 +576,7 @@ proc doV {} {
   global w
   global w2
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "$w3 0.0 $z"            "[expr {2*$w3}] 0.0 $z"]
   set con2 [createCon "[expr {2*$w3}] 0.0 $z" "$w $h $z"]
@@ -594,7 +595,7 @@ proc doW {} {
   global w
   global w2
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"            "$w2 $h3 $z"]
@@ -619,7 +620,7 @@ proc doX {} {
   global w
   global w2
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"              "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"              "$w2 [expr {2*$h5}] $z"]
@@ -643,7 +644,7 @@ proc doY {} {
   global w
   global w2
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "$w3 0.0 $z"                       "[expr {2*$w3}] 0.0 $z"]
   set con2 [createCon "[expr {2*$w3}] 0.0 $z"            "[expr {2*$w3}] [expr {2*$h5}] $z"]
@@ -663,7 +664,7 @@ proc doZ {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "$w 0.0 $z"]
   set con2  [createCon "$w 0.0 $z"                        "$w $h5 $z"]
@@ -686,7 +687,7 @@ proc do0 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z" "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"  "$w $h $z"]
@@ -706,7 +707,7 @@ proc do1 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"            "$w 0.0 $z"]
   set con2  [createCon "$w 0.0 $z"             "$w $h5 $z"]
@@ -728,7 +729,7 @@ proc do2 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"                        "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"                         "$w $h5 $z"]
@@ -751,7 +752,7 @@ proc do3 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "$w 0.0 $z"]
   set con2  [createCon "$w 0.0 $z"                        "$w $h $z"]
@@ -774,7 +775,7 @@ proc do4 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "[expr {2*$w3}] 0.0 $z"            "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"                        "$w $h $z"]
@@ -796,7 +797,7 @@ proc do5 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1  [createCon "0.0 0.0 $z"                       "$w 0.0 $z"]
   set con2  [createCon "$w 0.0 $z"                        "$w [expr {3*$h5}] $z"]
@@ -821,7 +822,7 @@ proc do6 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z"            "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"             "$w [expr {3*$h5}] $z"]
@@ -845,7 +846,7 @@ proc do7 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z" "$w3 0.0 $z"]
   set con2 [createCon "$w3 0.0 $z" "$w [expr {4*$h5}] $z"]
@@ -863,7 +864,7 @@ proc do8 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z" "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"  "$w $h $z"]
@@ -888,7 +889,7 @@ proc do9 {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "[expr {2*$w3}] 0.0 $z"            "$w 0.0 $z"]
   set con2 [createCon "$w 0.0 $z"                        "$w $h $z"]
@@ -909,7 +910,7 @@ proc do9 {} {
 
 proc doPeriod {} {
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 0.0 $z" "$w3 0.0 $z"]
   set con2 [createCon "$w3 0.0 $z" "$w3 $w3 $z"]
@@ -921,7 +922,7 @@ proc doPeriod {} {
 
 proc doComma {} {
   global w3
-  set z -0.1
+  global z
 
   set con1 [createCon "0.0 -$w3 $z" "$w3 0.0 $z"]
   set con2 [createCon "$w3 0.0 $z"  "$w3 $w3 $z"]
@@ -937,7 +938,7 @@ proc doExclamation {} {
   global h
   global h4
   global w3
-  set z -0.1
+  global z
 
   set period [doPeriod]
 
@@ -956,7 +957,7 @@ proc doQuestion {} {
   global h5
   global w
   global w3
-  set z -0.1
+  global z
 
   set period [doPeriod]
 

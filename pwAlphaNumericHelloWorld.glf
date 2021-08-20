@@ -7,15 +7,9 @@ set dx 0.6
 set dy 1.0
 
 ###########################################################################
-set loop [doH]
-
-doTranslate $loop {0.0 0.0 0.1}
-
-pw::Display zoomToEntities -animate 1 $loop
+set loop [doH 0.0 0.0 0.0]
 
 set all [list {*}$loop]
-
-set dom [createSimpleDomain $loop]
 
 ###########################################################################
 set loop [doE $dx 0.0 0.0]

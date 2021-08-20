@@ -419,13 +419,14 @@ proc doJ {{dx 0.0} {dy 0.0} {dz 0.0}} {
   return $dom
 }
 
-proc doK {} {
+proc doK {{dx 0.0} {dy 0.0} {dz 0.0}} {
   global h
   global h2
   global h5
   global w
   global w3
   global z
+  global animationSpeed
 
   set con1  [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
   set con2  [createCon "$w3 0.0 $z"            "$w3 [expr {2*$h5}] $z"]
@@ -439,7 +440,15 @@ proc doK {} {
   set con10 [createCon "$w3 $h $z"             "0.0 $h $z"]
   set con11 [createCon "0.0 $h $z"             "0.0 0.0 $z"]
 
-  return [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8 $con9 $con10 $con11]
+  set loop [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8 $con9 $con10 $con11]
+
+  doTranslate $loop "$dx $dy [expr {$dz - $z}]"
+
+  pw::Display zoomToEntities -animate $animationSpeed $loop
+
+  set dom [createSimpleDomain $loop]
+
+  return $dom
 }
 
 proc doL {} {

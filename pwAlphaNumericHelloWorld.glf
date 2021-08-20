@@ -72,15 +72,9 @@ set loops [doO $dx -$dy 0.0]
 lappend all {*}$loops
 
 ###########################################################################
-set loops [doR]
-
-doTranslate [join $loops] "[expr {2*$dx}] -$dy 0.1"
-
-pw::Display zoomToEntities -animate 1 [join $loops]
+set loops [doR [expr {2*$dx}] -$dy 0.0]
 
 lappend all {*}$loops
-
-set dom [createComplexDomain [lindex $loops 0] [lrange $loops 1 end]]
 
 ###########################################################################
 set loop [doL]

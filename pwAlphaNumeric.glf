@@ -1308,7 +1308,7 @@ proc doExclamation {{dx 0.0} {dy 0.0} {dz 0.0}} {
   return [join $dom $period]
 }
 
-proc doQuestion {} {
+proc doQuestion {{dx 0.0} {dy 0.0} {dz 0.0}} {
   global h
   global h2
   global h4
@@ -1316,10 +1316,9 @@ proc doQuestion {} {
   global w
   global w3
   global z
+  global animationSpeed
 
-  set period [doPeriod]
-
-  doTranslate $period "$w3 0.0 0.0"
+  set period [doPeriod [expr {$dx + $w3}] $dy $dz]
 
   set con1  [createCon "$w3 $h4 $z"                       "[expr {2*$w3}] $h4 $z"]
   set con2  [createCon "[expr {2*$w3}] $h4 $z"            "[expr {2*$w3}] [expr {2*$h5}] $z"]
@@ -1336,7 +1335,15 @@ proc doQuestion {} {
   set con11 [createCon "[expr {2*$w3}] [expr {3*$h5}] $z" "$w3 [expr {3*$h5}] $z"]
   set con12 [createCon "$w3 [expr {3*$h5}] $z"            "$w3 $h4 $z"]
 
-  return [list [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8 $con9 $con10 $con11 $con12] $period]
+  set loop [list $con1 $con2 $con3 $con4 $con5 $con6 $con7 $con8 $con9 $con10 $con11 $con12]
+
+  doTranslate $loop "$dx $dy [expr {$dz - $z}]"
+
+  pw::Display zoomToEntities -animate $animationSpeed $loop
+
+  set dom [createSimpleDomain $loop]
+
+  return [join $dom $period]
 }
 
 # vim: set ft=tcl:

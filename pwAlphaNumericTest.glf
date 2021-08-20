@@ -196,15 +196,9 @@ set loop [doPeriod $dx [expr {-5*$dy}] 0.0]
 lappend all {*}$loop
 
 ###########################################################################
-set loop [doComma]
-
-doTranslate $loop "[expr {2*$dx}] [expr {-5*$dy}] 0.1"
-
-pw::Display zoomToEntities -animate $animationSpeed $loop
+set loop [doComma [expr {2*$dx}] [expr {-5*$dy}] 0.0]
 
 lappend all {*}$loop
-
-set dom [createSimpleDomain $loop]
 
 ###########################################################################
 set loops [doExclamation]

@@ -1258,16 +1258,25 @@ proc doPeriod {{dx 0.0} {dy 0.0} {dz 0.0}} {
   return $dom
 }
 
-proc doComma {} {
+proc doComma {{dx 0.0} {dy 0.0} {dz 0.0}} {
   global w3
   global z
+  global animationSpeed
 
   set con1 [createCon "0.0 -$w3 $z" "$w3 0.0 $z"]
   set con2 [createCon "$w3 0.0 $z"  "$w3 $w3 $z"]
   set con3 [createCon "$w3 $w3 $z"  "0.0 $w3 $z"]
   set con4 [createCon "0.0 $w3 $z"  "0.0 -$w3 $z"]
 
-  return [list $con1 $con2 $con3 $con4]
+  set loop [list $con1 $con2 $con3 $con4]
+
+  doTranslate $loop "$dx $dy [expr {$dz - $z}]"
+
+  pw::Display zoomToEntities -animate $animationSpeed $loop
+
+  set dom [createSimpleDomain $loop]
+
+  return $dom
 }
 
 # This procedure has exposed an issue with the way these loops are handled... I

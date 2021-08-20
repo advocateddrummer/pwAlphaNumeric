@@ -5,7 +5,6 @@ source [file join $where pwAlphaNumeric.glf]
 
 set dx 0.6
 set dy 1.0
-set animationSpeed 0.5
 
 set all [list]
 

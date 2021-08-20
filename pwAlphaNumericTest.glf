@@ -116,15 +116,9 @@ set loops [doD [expr {3*$dx}] 0.0 0.0]
 lappend all {*}$loops
 
 ###########################################################################
-set loop [doE]
-
-doTranslate $loop "[expr {4*$dx}] 0.0 0.1"
-
-pw::Display zoomToEntities -animate $animationSpeed $loop
+set loop [doE [expr {4*$dx}] 0.0 0.0]
 
 lappend all {*}$loop
-
-set dom [createSimpleDomain $loop]
 
 ###########################################################################
 set loop [doF]

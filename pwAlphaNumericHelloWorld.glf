@@ -18,15 +18,9 @@ set all [list {*}$loop]
 set dom [createSimpleDomain $loop]
 
 ###########################################################################
-set loop [doE]
-
-doTranslate $loop "$dx 0.0 0.1"
-
-pw::Display zoomToEntities -animate 1 $loop
+set loop [doE $dx 0.0 0.0]
 
 lappend all {*}$loop
-
-set dom [createSimpleDomain $loop]
 
 ###########################################################################
 set loop [doL]

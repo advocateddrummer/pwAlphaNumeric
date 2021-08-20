@@ -116,6 +116,18 @@ lappend all {*}$loops
 
 set dom [createComplexDomain [lindex $loops 0] [lrange $loops 1 end]]
 
+###########################################################################
+#set loops [doExclamation]
+#
+#doTranslate [join $loops] "[expr {5*$dx}] -$dy 0.1"
+#
+#pw::Display zoomToEntities -animate $animationSpeed [join $loops]
+#
+#lappend all {*}$loops
+#
+#set dom [createSimpleDomain [lindex $loops 0]]
+#set dom [createSimpleDomain [lindex $loops 1]]
+
 pw::Display zoomToEntities -animate 1 [join $all]
 
 # vim: set ft=tcl:

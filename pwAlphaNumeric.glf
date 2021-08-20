@@ -81,6 +81,9 @@ set w3 [expr {$w/3.0}]
 set w4 [expr {$w/4.0}]
 set w5 [expr {$w/5.0}]
 
+# Other configurations
+set animationSpeed 0.5
+
 # The procedures below return a list (or a list of lists) containing the
 # loops/edges that make up each of the letters/numbers. Inner loops are wound
 # opposite to the outer loops so they should mesh without a problem.
@@ -91,7 +94,7 @@ set w5 [expr {$w/5.0}]
 # preexisting letter in the z = 0 plane.
 set z -0.1
 
-proc doA {} {
+proc doA {{dx 0.0} {dy 0.0} {dz 0.0}} {
   global h
   global h2
   global h3
@@ -100,6 +103,7 @@ proc doA {} {
   global w2
   global w3
   global z
+  global animationSpeed
 
   set con1 [createCon "0.0 0.0 $z"            "$w3 0.0 $z"]
   set con2 [createCon "$w3 0.0 $z"            "$w2 $h3 $z"]
@@ -113,7 +117,15 @@ proc doA {} {
   set con9  [createCon "$w2 [expr {3*$h4}] $z" "[expr {2*$w3}] $h2 $z"]
   set con10 [createCon "[expr {2*$w3}] $h2 $z" "$w3 $h2 $z"]
 
-  return [list [list $con1 $con2 $con3 $con4 $con5 $con6 $con7] [list $con8 $con9 $con10]]
+  set loops [list [list $con1 $con2 $con3 $con4 $con5 $con6 $con7] [list $con8 $con9 $con10]]
+
+  doTranslate [join $loops] "$dx $dy [expr {$dz - $z}]"
+
+  pw::Display zoomToEntities -animate $animationSpeed [join $loops]
+
+  set dom [createComplexDomain [lindex $loops 0] [lrange $loops 1 end]]
+
+  return $dom
 }
 
 

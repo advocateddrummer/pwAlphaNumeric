@@ -388,6 +388,7 @@ proc doI {{dx 0.0} {dy 0.0} {dz 0.0}} {
   return $dom
 }
 
+# TODO: improve this letter definition.
 proc doJ {{dx 0.0} {dy 0.0} {dz 0.0}} {
   global h
   global h5

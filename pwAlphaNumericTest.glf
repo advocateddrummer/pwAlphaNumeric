@@ -257,15 +257,9 @@ lappend all {*}$loop
 set dom [createSimpleDomain $loop]
 
 ###########################################################################
-set loops [doO]
-
-doTranslate [join $loops] "[expr {4*$dx}] [expr {-2*$dy}] 0.1"
-
-pw::Display zoomToEntities -animate $animationSpeed [join $loops]
+set loops [doO [expr {4*$dx}] [expr {-2*$dy}] 0.0]
 
 lappend all {*}$loops
-
-set dom [createComplexDomain [lindex $loops 0] [lrange $loops 1 end]]
 
 #########################################################################
 set loops [doP]

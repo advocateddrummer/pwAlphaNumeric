@@ -201,16 +201,9 @@ set loop [doComma [expr {2*$dx}] [expr {-5*$dy}] 0.0]
 lappend all {*}$loop
 
 ###########################################################################
-set loops [doExclamation]
-
-doTranslate [join $loops] "[expr {3*$dx}] [expr {-5*$dy}] 0.1"
-
-pw::Display zoomToEntities -animate $animationSpeed [join $loops]
+set loops [doExclamation [expr {3*$dx}] [expr {-5*$dy}] 0.0]
 
 lappend all {*}$loops
-
-set dom [createSimpleDomain [lindex $loops 0]]
-set dom [createSimpleDomain [lindex $loops 1]]
 
 ###########################################################################
 set loops [doQuestion]

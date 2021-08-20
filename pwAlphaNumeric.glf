@@ -1281,20 +1281,29 @@ proc doComma {{dx 0.0} {dy 0.0} {dz 0.0}} {
 
 # This procedure has exposed an issue with the way these loops are handled... I
 # need to re-think this.
-proc doExclamation {} {
+proc doExclamation {{dx 0.0} {dy 0.0} {dz 0.0}} {
   global h
   global h4
   global w3
   global z
+  global animationSpeed
 
-  set period [doPeriod]
+  set period [doPeriod $dx $dy $dz]
 
   set con1 [createCon "0.0 $h4 $z" "$w3 $h4 $z"]
   set con2 [createCon "$w3 $h4 $z" "$w3 $h $z"]
   set con3 [createCon "$w3 $h $z"  "0.0 $h $z"]
   set con4 [createCon "0.0 $h $z"  "0.0 $h4 $z"]
 
-  return [list [list $con1 $con2 $con3 $con4] $period]
+  set loop [list $con1 $con2 $con3 $con4]
+
+  doTranslate $loop "$dx $dy [expr {$dz - $z}]"
+
+  pw::Display zoomToEntities -animate $animationSpeed $loop
+
+  set dom [createSimpleDomain $loop]
+
+  return [join $dom $period]
 }
 
 proc doQuestion {} {

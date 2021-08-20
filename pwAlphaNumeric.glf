@@ -1280,7 +1280,9 @@ proc doComma {{dx 0.0} {dy 0.0} {dz 0.0}} {
 }
 
 # This procedure has exposed an issue with the way these loops are handled... I
-# need to re-think this.
+# need to re-think this. Furthermore, now that this interface has changed,
+# there are yet more problems with this approach. I do need to re-work/think
+# this logic.
 proc doExclamation {{dx 0.0} {dy 0.0} {dz 0.0}} {
   global h
   global h4

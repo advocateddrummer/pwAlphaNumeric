@@ -17,7 +17,7 @@ proc createSimpleDomain {outerLoop} {
   set dom [pw::DomainUnstructured createFromConnectors -reject unusedCons $outerLoop]
   unset unusedCons
 
-  return dom
+  return $dom
 }
 
 proc createComplexDomain {outerLoop {innerLoops {} } } {
@@ -50,6 +50,8 @@ proc createComplexDomain {outerLoop {innerLoops {} } } {
     }
   $mode1 end
   unset mode1
+
+  return $dom
 }
 
 proc createCon {pt1 pt2} {

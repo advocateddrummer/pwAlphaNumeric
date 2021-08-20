@@ -944,7 +944,7 @@ proc doComma {} {
   return [list $con1 $con2 $con3 $con4]
 }
 
-# This procedure has exposed an issue with the way these loops are handles... I
+# This procedure has exposed an issue with the way these loops are handled... I
 # need to re-think this.
 proc doExclamation {} {
   global h
